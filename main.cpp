@@ -9,11 +9,17 @@ int main(int argc, char **argv)
     return -1;
     }                                                          
     
-    char *mas= MD5().ifopen(argv[1]);
-    printf("Hash for %s\n",mas);
-    MD5::install();
+    
     MD5 md5;
-    md5.hash(mas);
-
+if(md5.ifopen(argv[1]))
+{
+printf("Hash for %s\n",md5.mes);
+    
+    MD5::install();
+    
+    md5.hash();
+}
+else
+ printf("не удалось считать файл \"%s\"\n",argv[1]);
     
 }

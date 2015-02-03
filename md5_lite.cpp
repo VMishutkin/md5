@@ -160,7 +160,7 @@ void MD5::final(byte res[16])
 	hexPrinter(res,16);
 }
 
-char* MD5::ifopen(char* ifile)
+bool MD5::ifopen(char* ifile)
 {
 ifstream in(ifile, ios::binary);                                                     
 
@@ -171,22 +171,19 @@ ifstream in(ifile, ios::binary);
     unsigned int file_size = (unsigned int)in.tellg();                                     
     in.seekg(0, ios::beg);                                                                 
 
-    char *mas = new char[file_size]; 
+    mes = new char[file_size]; 
     
-    in.read(mas, file_size);                                                                                                      
+    in.read(mes, file_size);                                                                                                      
     in.close();                                                                            
     
  
-    return mas;
+    return true;
 }
 
-void MD5::hash(const char* mas)
+void MD5::hash()
 {
 byte res[16];
-update(mas);
+update(mes);
 final(res);
 
 }
-
-
-

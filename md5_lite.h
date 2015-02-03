@@ -1,6 +1,3 @@
-
-
-
 #include <math.h>
 #include <assert.h>
 #include <stdio.h>
@@ -14,7 +11,7 @@
 
 using namespace std;
 typedef unsigned char byte;
-typedef unsigned long dword;
+typedef unsigned int dword;
 typedef uint64_t dword64; 
 typedef unsigned int  uint;
 
@@ -35,7 +32,7 @@ protected:
 //! md5 (обертка для нормальной работы, подаёт блоки на обработку, делает завершающие операции)
 class MD5:public MD5_block
 {
-
+	
 	uint size;			//!< заполнение буфера
 	uint total_size;	//!< суммарный размер всех данных
 	byte buffer[64];	//!< сам буфер
@@ -46,8 +43,9 @@ public:
 	void update(const char* str,uint size=0);
 	void final(byte[16]);
 	static void install();	//!< заполняет константы (вызывает один раз, перед использованием первого объекта)
-	char* ifopen(char* ifile);
-	void hash(const char* mas);
+	bool ifopen(char* ifile);
+	void hash();
+	char* mes;
 };
 
 

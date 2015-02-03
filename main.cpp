@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     MD5 md5;
 if(md5.ifopen(argv[1]))
 {
-printf("Hash for %s\n",md5.mes);
+//printf("Hash for %s\n",md5.mes);
     
     MD5::install();
     
